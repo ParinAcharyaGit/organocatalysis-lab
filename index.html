@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Organocatalysis Lab · Nobel Prize in Chemistry 2021</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eef3f6;--card:#fff;--ink:#10222b;--mut:#506670;--line:#cfdbe2;--ena:#7a3ea1;--imi:#0b7a8a;--ok:#2f8f5b;--warn:#b7791f}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a20;--card:#162830;--ink:#e6eff3;--mut:#9ab2bc;--line:#2a424d;--ena:#c08be6;--imi:#4cc3d3;--ok:#5fd08e;--warn:#e6b14f}}
+:root[data-theme="dark"]{--bg:#0e1a20;--card:#162830;--ink:#e6eff3;--mut:#9ab2bc;--line:#2a424d;--ena:#c08be6;--imi:#4cc3d3;--ok:#5fd08e;--warn:#e6b14f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Source Serif 4",Georgia,serif}
+h1,h2,h3,.tab,button,label,.k{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.08;margin:.2em 0 .3em;letter-spacing:-.02em}
+.lede{max-width:62ch;color:var(--mut)}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 14px;border-bottom:2px solid var(--line)}
+.tab{border:0;background:none;color:var(--mut);padding:10px 14px;font-size:1rem;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
+.tab[aria-selected=true]{color:var(--ink);border-color:var(--ink);font-weight:700}
+button:focus-visible,input:focus-visible,select:focus-visible,.cell:focus-visible{outline:3px solid var(--imi);outline-offset:2px}
+.panel[hidden]{display:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+label{display:block;font-size:.88rem;margin:10px 0 2px;color:var(--mut)}
+label b{color:var(--ink)}
+input[type=range]{width:100%}select{width:100%;padding:7px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:9px 14px;cursor:pointer;font-size:.95rem}
+.btn.alt{background:none;color:var(--ink);border:1px solid var(--ink)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.seg button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 12px;cursor:pointer;font-size:.9rem}
+.seg button:first-child{border-radius:8px 0 0 8px}.seg button:last-child{border-radius:0 8px 8px 0}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.node{fill:var(--card);stroke:var(--line);stroke-width:2;transition:.25s}
+.node.on{stroke:var(--accent);fill:color-mix(in srgb,var(--accent) 16%,var(--card));stroke-width:4}
+svg text{fill:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.meter{height:18px;border-radius:9px;background:var(--line);overflow:hidden;display:flex}
+.meter i{display:block;height:100%;transition:width .4s}
+.num{font:700 2rem/1 "Bricolage Grotesque",system-ui,sans-serif}
+.small{font-size:.86rem;color:var(--mut)}
+.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-bottom:14px}
+.lib button{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--ink);cursor:pointer;font-size:.9rem}
+.lib button[aria-pressed=true]{border:2px solid var(--ink)}
+.lib em{display:block;font-style:normal;color:var(--mut);font-size:.78rem}
+canvas{width:100%;height:auto;display:block;border-radius:8px;background:var(--card)}
+.cells{display:grid;grid-template-columns:repeat(20,1fr);gap:1px;aspect-ratio:1;touch-action:manipulation}
+.cell{border:0;padding:0;background:var(--line);cursor:pointer;min-width:0}
+.pt{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
+.pt p{margin:.2em 0 0;font-size:.95rem}.pt h3{margin:0;font-size:1rem}
+.note{border-left:4px solid var(--warn);padding:6px 12px;margin-top:14px;color:var(--mut);font-size:.88rem}
+:root{--band:#fbeccb;--gold:#e8b030;--pill:#d9a010}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--band:#1d3038;--gold:#7a5a12;--pill:#a87a14}}:root[data-theme="dark"]{--band:#1d3038;--gold:#7a5a12;--pill:#a87a14}
+body{background:var(--gold)}main{padding:14px 12px 50px}
+.band{background:var(--band);border-radius:16px;padding:20px;margin:12px 0}
+.hd h1{text-transform:uppercase;font-size:clamp(1.8rem,5.4vw,3.2rem);margin:.1em 0 .25em}
+.pill{display:inline-block;background:var(--pill);color:#2a1a00;font:700 .95rem "Bricolage Grotesque",system-ui,sans-serif;padding:5px 16px;border-radius:999px;margin-bottom:12px}
+.band h2{margin:0 0 8px;font-size:1.7rem;color:var(--ink)}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;font:.85rem 'Bricolage Grotesque',system-ui,sans-serif}.chip[aria-pressed=true]{background:var(--ink);color:var(--bg)}.chip i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+table{width:100%;border-collapse:collapse;font-size:.88rem}td,th{padding:5px 8px;border-bottom:1px solid var(--line);text-align:left}tbody tr{cursor:pointer}tr.sel{background:color-mix(in srgb,var(--imi) 20%,transparent)}
+.mv{animation:mv .9s ease-out both}@keyframes mv{from{transform:translate(var(--dx),var(--dy));opacity:.15}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.mv{animation:none}}
+</style></head><body><main>
+<div class="band hd"><p class="k small" style="margin:0">Interactive infographic · awarded to Benjamin List &amp; David MacMillan</p>
+<h1>2021 Nobel Prize in Chemistry</h1>
+<p class="lede">Many drug molecules come as left- and right-handed mirror images, and only one helps. In 2000, List and MacMillan showed that small metal-free organic molecules can steer a reaction toward one hand. Run the experiment, compare five reactions, then mine the literature with a small data-science prototype.</p></div>
+<section class="band"><div class="pill">Mirror-image molecules (enantiomers)</div><div class="grid" style="align-items:center"><svg id="mir" viewBox="0 0 440 190" role="img" aria-label="Two mirror-image molecules" style="width:100%;height:auto"></svg><div><p style="margin:0 0 8px">Same atoms, same bonds, opposite handedness, like your left and right hands. Enzymes make one hand only. Chemists usually need one hand too, because the other can act differently in the body.</p><button class="btn" id="swp">Swap two groups on the left molecule</button><p class="small" id="swpT"></p></div></div></section>
+
+<!-- LAB -->
+<section id="lab" class="band"><div class="pill">Run the experiment</div>
+<div class="seg row" style="margin:0 0 12px" id="rxSeg">
+<button data-r="aldol" aria-pressed="true">List · proline aldol (enamine)</button><button data-r="da" aria-pressed="false">MacMillan · Diels–Alder (iminium)</button></div>
+<div class="grid">
+<div class="card"><svg id="cyc" viewBox="0 0 440 400" role="img" aria-label="Catalytic cycle"></svg><svg id="scn" viewBox="0 0 440 150" role="img" aria-label="Plain-language picture of the current step" style="width:100%;height:auto;background:var(--band);border-radius:8px;margin-top:6px"></svg><p id="plain" style="margin:6px 0;font-weight:600"></p>
+<p id="stepTxt" style="margin:4px 0 0;min-height:3.4em"></p>
+<div class="row"><button class="btn" id="play">Play cycle</button><button class="btn alt" id="next">Next step</button></div></div>
+<div class="card"><h3 style="margin:0 0 4px">Adjust the experiment</h3>
+<label>Catalyst<select id="cat"></select></label>
+<label>Solvent<select id="sol"></select></label>
+<label>Catalyst loading: <b id="vL"></b> mol%</label><input type="range" id="L" min="1" max="40" value="30">
+<label>Temperature: <b id="vT"></b> °C</label><input type="range" id="T" min="-40" max="50" value="25">
+<label>Time: <b id="vH"></b> h</label><input type="range" id="H" min="1" max="48" value="4">
+<div style="margin-top:14px"><div class="small">Yield</div><div class="num" id="oy"></div><div class="meter"><i id="by" style="background:var(--ok)"></i></div></div>
+<div style="margin-top:12px"><div class="small">Enantiomeric excess (how lopsided the mirror-image mix is)</div><div class="num" id="oe"></div>
+<div class="meter"><i id="bR" style="background:var(--ena)"></i><i id="bS" style="background:var(--imi)"></i></div>
+<div class="small" id="hand"></div></div></div></div>
+<div class="card" style="margin-top:16px"><h3 style="margin:0 0 4px">What the catalyst does to the electrons</h3><p id="orbTxt" style="margin:0 0 8px"></p>
+<svg id="orb" viewBox="0 0 640 200" role="img" aria-label="Energy levels with a movable electron" style="width:100%;height:auto"></svg>
+<label>Catalyst effect: <b id="vE">0</b>%</label><input type="range" id="eff" min="0" max="100" value="0">
+<div class="row" style="align-items:center"><button class="btn" id="nudge">Give the electron a nudge</button><span id="orbRes" class="small"></span></div>
+<div class="small" style="margin-top:8px">How easy it is to react (conceptual)</div><div class="meter"><i id="easeB" style="background:var(--ok)"></i></div></div>
+<p class="note">The sliders drive a simplified toy model, anchored on figures reported in the List 2000 paper (30 mol% proline, DMSO, 4 h: 68% yield, 76% ee; solvent ee values for DMSO, DMF, acetone, THF and MeCN; failed catalysts) and the MacMillan range in the Nobel background (72–92%, er 91.5:8.5 up to 98:2). Temperature, time and Diels–Alder solvent trends are illustrative, not measured.</p>
+</section>
+
+<!-- LIBRARY -->
+<section id="lib" class="band"><div class="pill">Five reactions, one idea</div>
+<div class="lib" id="libBtns"></div>
+<div class="grid"><div class="card" id="libCard"></div>
+<div class="card"><h3 style="margin:0 0 6px">Yield vs. selectivity</h3><canvas id="libCh" width="420" height="300"></canvas><p class="small">Selectivity is shown as ee, converted from the reported enantiomer ratio (er).</p></div></div>
+</section>
+
+<!-- DATA SCIENCE -->
+<section id="ds" class="band"><div class="pill">Data science prototype: catalyst advisor</div>
+<p style="margin:0 0 10px;max-width:68ch">Question: which catalyst family should a new project try first? This prototype uses 19 results with a reported selectivity, taken by hand from the two provided documents; every row cites its page, equation or scheme. Filter by family, split the record at any year, and test a simple predictor.</p>
+<div class="row" id="chips" style="margin:0 0 12px"></div>
+<div class="grid"><div class="card"><canvas id="sc" width="520" height="340" role="img" aria-label="Scatter plot of reported ee by year; the table below lists the same data"></canvas>
+<label>Split the record at: <b id="vY"></b></label><input type="range" id="Y" min="1910" max="2010" value="2000"><p id="stats" style="margin:8px 0 0"></p></div>
+<div class="card"><h3 style="margin:0 0 4px">Predict a family's selectivity</h3><label>Catalyst family<select id="pc"></select></label>
+<div class="num" id="pe" style="margin-top:8px"></div><p class="small" id="pt" style="margin:4px 0"></p><p class="small" id="rk" style="margin:4px 0"></p><p class="small" id="loo" style="margin:4px 0"></p></div></div>
+<div class="card" style="margin-top:12px"><p class="small" id="sd" style="margin:0 0 6px">Click a dot or a row for details.</p><div style="overflow-x:auto"><table id="tb"></table></div></div>
+<div class="card" style="margin-top:12px"><h3 style="margin:0 0 6px">Sources</h3><p class="small" style="margin:0 0 6px"><b>Nobel background:</b> The Nobel Committee for Chemistry (P. Somfai), <i>Scientific Background on the Nobel Prize in Chemistry 2021: Enamine and iminium ion–mediated organocatalysis</i>, Royal Swedish Academy of Sciences, 6 October 2021. Page numbers are the document's own (n of 19).<br><b>List paper:</b> List, B.; Lerner, R. A.; Barbas, C. F. III, <i>Proline-catalyzed direct asymmetric aldol reactions</i>, J. Am. Chem. Soc. 2000, 122, 2395–2396.</p>
+<p class="small" style="margin:0">Original papers behind the reference numbers in the Nobel background: 12–13 Pracejus (1960, 1964); 20–21 Sigman &amp; Jacobsen (1998), Zuend et al. (2009); 25 Ahrendt, Borths &amp; MacMillan (2000); 28–30 Hajos &amp; Parrish (1971, 1974), Eder, Sauer &amp; Wiechert (1971); 33 Hoffmann et al. (1998); 38 Yamaguchi et al. (1993); 39 Kawara &amp; Taguchi (1994); 44 Chandler et al. (2009); 50 Paras &amp; MacMillan (2002); 53 Marigo et al. (2005); 54 Hayashi et al. (2005); 55 Marigo et al. (2005); 58 Conrad et al. (2009); 59 Nicewicz &amp; MacMillan (2008); 68 Liu, Chougnet &amp; Woggon (2008); 70 Sedelmeier, patent WO2008119804A1.</p></div>
+<div class="pt"><div class="card"><h3>From text to table</h3><p>Every row here was read from prose, schemes and ratios, then converted from er to ee. Automated extraction from papers and patents would build this table at scale.</p></div>
+<div class="card"><h3>What more data enables</h3><p>With thousands of reactions, models can use catalyst structure, solvent and substrate rather than family alone, and can suggest experiments, as in the Bayesian screening ideas behind modern lab automation.</p></div>
+<div class="card"><h3>Handle with care</h3><p>Papers report successes, and each reaction has its own conditions. A small, biased sample like this one shows the method, not a ranking you should trust.</p></div></div>
+<p class="note">ee = er difference (for example 87:13 gives 74% ee). Values are the best reported in each source. The double Mannich ratio appears garbled in the source text and is read here as 99.5:0.5. The 1912 and 1975 alkaloid results and the Agami cyclisations are left out because only "low" or "moderate" was reported.</p></section>
+<section class="band"><h2>Why does this research matter?</h2><div class="why"><div class="card"><h3 style="margin:0">No metals needed</h3><p class="small" style="margin:4px 0 0">Catalysts built from carbon, hydrogen, nitrogen, sulphur and phosphorus avoid metal catalysts' sensitivity and environmental cost.</p></div><div class="card"><h3 style="margin:0">Built from nature's parts</h3><p class="small" style="margin:4px 0 0">Proline is an amino acid, available in both mirror-image forms. The imidazolidinone starts from phenylalanine.</p></div><div class="card"><h3 style="margin:0">Steps that chain together</h3><p class="small" style="margin:4px 0 0">Cascade reactions skip purification between steps, as in the vitamin E synthesis, with fewer steps and less waste.</p></div></div></section></main>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$$('.tab').forEach(b=>b.onclick=()=>{$$('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));$$('.panel').forEach(p=>p.hidden=p.id!==b.dataset.p);if(b.dataset.p==='lib')drawLib();if(b.dataset.p==='ds')drawConv()});
+/* ---------- LAB ---------- */
+const RX={
+aldol:{mode:'ena',acc:'--ena',cap:70,k0:.0292,L:30,sol:{DMSO:76,DMF:76,Acetone:67,THF:60,MeCN:56,'DMF/H2O':35},
+cat:{'L-proline':[1,1,1],'D-proline (mirror-image catalyst)':[1,1,-1],'2-Azetidinecarboxylic acid':[.25,.4,1],'Pipecolic acid':[0,0,1],'2-Pyrrolidine carboxamide':[0,0,1],'No catalyst':[0,0,1]},
+steps:[['Amine attacks','Proline\'s nitrogen attacks acetone\'s carbonyl (step a).'],['Dehydrate','Loss of water gives an iminium ion (step b).'],['Deprotonate','Losing a proton gives the enamine, with a raised HOMO, so it is a better nucleophile (step c).'],['C–C bond forms','The enamine attacks the aldehyde. The carboxylic acid holds the transition state in place by hydrogen bonding (step d).'],['Iminium-aldol','The new bond sits on an iminium ion bound to the catalyst.'],['Hydrolyse','Water releases the aldol product and returns proline (steps e, f).']]},
+da:{mode:'imi',acc:'--imi',cap:92,k0:.11,L:5,sol:{'MeOH/H2O':90,MeOH:84,MeCN:76,THF:62},
+cat:{'Imidazolidinone 9':[1,1,1],'Mirror-image imidazolidinone':[1,1,-1],'No catalyst':[0,0,1]},
+steps:[['Amine meets enal','The catalyst\'s secondary amine meets an α,β-unsaturated aldehyde.'],['Iminium ion','Condensation gives an iminium ion. Its LUMO is lowered, so it is more reactive toward dienes.'],['Diene attacks','Cyclopentadiene adds in a Diels–Alder step. The bulky catalyst blocks one face.'],['Cycloadduct','A six-membered ring forms, now as an iminium ion.'],['Hydrolyse','Water cleaves the iminium, freeing the aldehyde product.'],['Catalyst back','The imidazolidinone is regenerated for the next molecule.']]}};
+const AC='#f0b93a',BC='#52c0cf',WC='#6db8f2',GC='#7fd08a',RD='#e0453a',CA='#b27ad8',CD='#3cb8c8';
+const mv=(dx,dy=0)=>`class="mv" style="--dx:${dx}px;--dy:${dy}px"`;
+const tx=(x,y,t)=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="12.5">${t}</text>`;
+const cat=(x,c,m='')=>`<g ${m}><circle cx="${x}" cy="75" r="19" fill="${c}"/><path d="M${x+15} 61l18 7M${x+15} 89l18-7" stroke="${c}" stroke-width="7" stroke-linecap="round"/></g>`;
+const blk=(x,y,c,t,m='')=>`<g ${m}><rect x="${x-30}" y="${y-20}" width="60" height="40" rx="11" fill="${c}"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="12" style="fill:#10222b">${t}</text></g>`;
+const hx=(x,y,c,t,m='')=>`<g ${m}><polygon points="${Array.from({length:6},(_,i)=>[x+26*Math.cos(i*Math.PI/3),y+26*Math.sin(i*Math.PI/3)].join(',')).join(' ')}" fill="${c}"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="12" style="fill:#10222b">${t}</text></g>`;
+const dp=(x,y,m='')=>`<g ${m}><path d="M${x} ${y-12}q-10 14-10 20a10 10 0 0020 0q0-6-10-20z" fill="${WC}"/></g>`;
+const bd=(x1,y1,x2,y2,c=RD,d='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="6" stroke-linecap="round"${d?' stroke-dasharray="6 6"':''}/>`;
+const gl=(x,y,r,c)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${c}" opacity=".4"/>`;
+const lk=bd(180,75,192,75,'#8a9ba5');
+const SC={aldol:[
+()=>cat(110,CA,mv(-90))+blk(300,75,AC,'ketone',mv(60))+tx(110,118,'catalyst')+tx(300,118,'starting piece 1')+tx(220,140,'the catalyst grabs a piece'),
+()=>cat(150,CA)+lk+blk(222,75,AC,'ketone')+dp(222,28,mv(0,30))+tx(222,134,'a water molecule pops out'),
+()=>gl(222,75,46,'#ffd24d')+cat(150,CA)+lk+blk(222,75,AC,'ketone')+tx(222,22,'eager to react')+tx(222,134,'the piece is now spring-loaded'),
+()=>cat(150,CA)+lk+blk(222,75,AC,'ketone')+bd(252,75,320,75,'#8a9ba5',1)+hx(350,75,BC,'piece 2',mv(90))+tx(290,134,'the catalyst steers piece 2 in from one side'),
+()=>cat(150,CA)+lk+blk(222,75,AC,'ketone')+bd(252,75,266,75)+hx(292,75,BC,'piece 2')+tx(250,134,'new bond: the pieces are joined, one way only'),
+()=>cat(80,CA)+dp(168,45,mv(-70,0))+blk(270,75,AC,'ketone')+bd(300,75,312,75)+hx(338,75,BC,'piece 2')+tx(80,118,'catalyst is free')+tx(305,134,'product: mostly one mirror image')],
+da:[
+()=>cat(110,CD,mv(-90))+blk(300,75,AC,'enal',mv(60))+tx(110,118,'catalyst')+tx(300,118,'starting piece 1')+tx(220,140,'the catalyst grabs a piece'),
+()=>gl(222,75,46,'#9de6ee')+cat(150,CD)+lk+blk(222,75,AC,'enal')+dp(222,26,mv(0,30))+tx(222,134,'water leaves; the pair is now hungry for a partner'),
+()=>cat(150,CD)+lk+blk(222,75,AC,'enal')+`<rect x="186" y="104" width="84" height="16" rx="8" fill="#5a6b76"/>`+hx(340,32,GC,'diene',mv(80,0))+tx(228,140,'a bulky shield blocks the underside, so the partner comes from the top')+tx(228,98,''),
+()=>cat(150,CD)+lk+blk(222,75,AC,'enal')+hx(222,28,GC,'ring')+bd(222,50,222,57)+tx(222,134,'a new six-sided ring snaps shut'),
+()=>cat(150,CD)+lk+blk(222,75,AC,'enal')+hx(222,28,GC,'ring')+bd(222,50,222,57)+dp(182,100,mv(-60,30))+tx(222,134,'water snips the catalyst free'),
+()=>cat(80,CD)+blk(285,75,AC,'enal')+hx(285,28,GC,'ring')+bd(285,50,285,57)+tx(80,118,'catalyst is free')+tx(285,134,'product: mostly one mirror image')]};
+const PL={aldol:['The catalyst grabs one of the two starting pieces, like a hand picking up a block.','A water molecule pops out, so the catalyst and the piece stick together.','This makes the piece eager to join a partner. Chemists call this raising the HOMO (see the electron demo below).','The catalyst holds the second piece so it can only approach from one side. That choice is what picks the mirror-image form.','The two pieces join with a new bond while the catalyst still holds them.','Water frees the product and the catalyst is ready for the next round.'],
+da:['The catalyst grabs one of the two starting pieces, like a hand picking up a block.','Water leaves, and the pair becomes hungry for a partner. Chemists call this lowering the LUMO (see the electron demo below).','A bulky part of the catalyst shields one side, so the partner can only arrive from the other.','The partner snaps on and a six-sided ring forms, still held by the catalyst.','Water cuts the link between catalyst and product.','The product leaves, mostly as one mirror-image form, and the catalyst starts again.']};
+let rx='aldol',st=0,timer=null;
+const f=(v,d=0)=>(+v).toFixed(d);
+function setRx(r){rx=r;const R=RX[r];$$('#rxSeg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.r===r));
+$('#cat').innerHTML=Object.keys(R.cat).map(k=>`<option>${k}</option>`).join('');$('#sol').innerHTML=Object.keys(R.sol).map(k=>`<option>${k}</option>`).join('');
+$('#L').value=R.L;$('#T').value=25;$('#H').value=4;st=0;drawCyc();calc()}
+$$('#rxSeg button').forEach(b=>b.onclick=()=>setRx(b.dataset.r));
+['cat','sol','L','T','H'].forEach(i=>$('#'+i).oninput=calc);
+function calc(){const R=RX[rx],c=R.cat[$('#cat').value],L=+$('#L').value,T=+$('#T').value,H=+$('#H').value;
+$('#vL').textContent=L;$('#vT').textContent=T;$('#vH').textContent=H;
+const k=R.k0*L*c[0]*Math.exp((T-25)/30);let y=R.cap*(1-Math.exp(-k*H))*(1-.004*Math.max(0,T-25));if(c[0]===0)y=1;
+let ee=c[0]===0?0:Math.min(99,Math.max(2,R.sol[$('#sol').value]*c[1]-.35*(T-25)));
+$('#oy').textContent=f(y)+'%';$('#by').style.width=y+'%';$('#oe').textContent=f(ee)+'% ee';
+const hi=50+ee/2,lo=50-ee/2,sg=c[2]>0;$('#bR').style.width=(sg?hi:lo)+'%';$('#bS').style.width=(sg?lo:hi)+'%';
+$('#hand').textContent=c[0]===0?'No selectivity: a 50:50 mix of mirror images.':`${f(hi)}:${f(lo)} favouring the ${sg?'purple':'teal'} enantiomer.`;
+drawOrb()}
+function drawCyc(){const R=RX[rx],n=6,cx=220,cy=190,r=135;let s=`<style>.node{--accent:var(${R.acc})}</style>`;
+for(let i=0;i<n;i++){const a=-Math.PI/2+i*2*Math.PI/n,a2=a+2*Math.PI/n,x=cx+r*Math.cos(a),y=cy+r*Math.sin(a);
+const m=cx+r*Math.cos((a+a2)/2)*1.0,my=cy+r*Math.sin((a+a2)/2);
+s+=`<path d="M${x} ${y}L${cx+r*Math.cos(a2)} ${cy+r*Math.sin(a2)}" stroke="var(--line)" stroke-width="3" fill="none"/>`;
+s+=`<circle class="node${i===st?' on':''}" cx="${x}" cy="${y}" r="30" id="n${i}"/><text x="${x}" y="${y+5}" text-anchor="middle" font-size="15" font-weight="700">${i+1}</text>`;
+const lx=cx+(r+52)*Math.cos(a),ly=cy+(r+46)*Math.sin(a);s+=`<text x="${lx}" y="${ly+4}" text-anchor="middle" font-size="12.5">${R.steps[i][0]}</text>`}
+s+=`<text x="${cx}" y="${cy-4}" text-anchor="middle" font-size="15" font-weight="700">${R.mode==='ena'?'Enamine':'Iminium'}</text><text x="${cx}" y="${cy+14}" text-anchor="middle" font-size="13" fill="var(--mut)">catalysis</text>`;
+$('#cyc').innerHTML=s;showStep()}
+function showStep(){const R=RX[rx];$('#scn').innerHTML=SC[rx][st]();$('#plain').textContent=PL[rx][st];$$('#cyc .node').forEach((e,i)=>e.classList.toggle('on',i===st));$('#stepTxt').innerHTML=`<b>${st+1}. ${R.steps[st][0]}.</b> ${R.steps[st][1]}`}
+function adv(){st=(st+1)%6;showStep()}
+$('#next').onclick=adv;$('#play').onclick=function(){if(timer){clearInterval(timer);timer=null;this.textContent='Play cycle'}else{timer=setInterval(adv,1900-Math.min(1500,+$('#L').value*30));this.textContent='Pause'}};
+let om=null,busy=false;
+function drawOrb(){const ena=RX[rx].mode==='ena';
+if(om!==ena){om=ena;$('#eff').value=0;const ac=ena?'var(--ena)':'var(--imi)';
+$('#orb').innerHTML=`<text x="12" y="16" font-size="13" style="fill:var(--mut)">Energy ↑</text>
+<line id="dB" x1="90" x2="230" stroke="${ena?ac:'var(--ink)'}" stroke-width="8" stroke-linecap="round"/>
+<line id="aB" x1="410" x2="550" stroke="${ena?'var(--ink)':ac}" stroke-width="8" stroke-linecap="round"/>
+<line id="gp" x1="320" x2="320" stroke="var(--mut)" stroke-width="2" stroke-dasharray="5 4"/>
+<text id="gt" x="330" font-size="12.5" style="fill:var(--mut)">push needed</text>
+<text id="dT" x="160" text-anchor="middle" font-size="12.5">electron shelf (HOMO)</text><text id="aT" x="480" text-anchor="middle" font-size="12.5">landing spot (LUMO)</text>
+<text x="160" y="197" text-anchor="middle" font-size="13" font-weight="700">${ena?'Piece + catalyst: the giver':'The giver (diene)'}</text>
+<text x="480" y="197" text-anchor="middle" font-size="13" font-weight="700">${ena?'The taker (aldehyde)':'Piece + catalyst: the taker'}</text>
+<circle id="eb" r="9" fill="#f0b93a" stroke="var(--ink)" stroke-width="2" style="transition:transform .5s"/>`;
+$('#orbTxt').textContent=ena?'Picture the electron as a ball on a shelf. The catalyst lifts the shelf, so a small nudge is enough to send the ball over to its partner. Drag the slider, then nudge.':'Picture the electron as a ball hunting for a landing spot. The catalyst deepens the landing pit, so the same nudge now reaches it. Drag the slider, then nudge.'}
+const s=$('#eff').value/100,hy=ena?150-60*s:150,ly=ena?40:40+60*s;$('#vE').textContent=Math.round(s*100);
+$('#dB').setAttribute('y1',hy);$('#dB').setAttribute('y2',hy);$('#aB').setAttribute('y1',ly);$('#aB').setAttribute('y2',ly);
+$('#gp').setAttribute('y1',ly);$('#gp').setAttribute('y2',hy);$('#gt').setAttribute('y',(ly+hy)/2+4);$('#dT').setAttribute('y',hy+22);$('#aT').setAttribute('y',ly-12);
+$('#easeB').style.width=Math.max(0,Math.min(100,(110-(hy-ly))/60*100))+'%';
+const eb=$('#eb');eb.setAttribute('cx',160);eb.setAttribute('cy',hy-11);eb.style.transform='none';$('#orbRes').textContent='';busy=false}
+$('#eff').oninput=drawOrb;
+$('#nudge').onclick=()=>{if(busy)return;busy=true;const hy=+$('#dB').getAttribute('y1'),ly=+$('#aB').getAttribute('y1'),N=75,eb=$('#eb');
+eb.style.transform=`translate(0px,${-N}px)`;setTimeout(()=>{if(hy-N<=ly){eb.style.transform=`translate(320px,${ly-hy}px)`;$('#orbRes').textContent='The electron reached its partner: the reaction can go.'}else{eb.style.transform='none';$('#orbRes').textContent='Not enough push: the electron fell back and the reaction stalls.'}setTimeout(()=>busy=false,550)},550)};
+/* ---------- LIBRARY ---------- */
+const LIB=[
+{n:'Proline aldol',y:'List, Lerner & Barbas · 2000',cat:'L-proline (30 mol%)',mode:'HOMO raising (enamine)',Y:68,E:76,d:'Acetone + 4-nitrobenzaldehyde in DMSO, 4 h. With isobutyraldehyde the same reaction reached 97% yield and 96% ee. The first metal-free direct intermolecular asymmetric aldol, with proline acting as a "micro-aldolase".'},
+{n:'Diels–Alder',y:'Ahrendt, Borths & MacMillan · 2000',cat:'Imidazolidinone 9 (5 mol%)',mode:'LUMO lowering (iminium)',Y:82,E:90,d:'Enals + cyclopentadiene in MeOH/H2O. Across 12 examples yields were 72–92% and er ran from 91.5:8.5 to 98:2 (values shown are mid-range). The catalyst is made in three steps from L-phenylalanine.'},
+{n:'Hajos–Parrish–Eder–Sauer–Wiechert',y:'Early 1970s',cat:'L-proline (0.3 mol%, Hajos)',mode:'Enamine, intramolecular',Y:87,E:95,d:'Proline cyclises an achiral triketone to the Wieland–Miescher ketone, a steroid building block (er 97.4:2.6). A precursor that was not followed up as a general concept until 2000.'},
+{n:'Michael addition',y:'Hayashi · 2005',cat:'Diarylprolinol silyl ether (5 mol%)',mode:'HOMO raising (enamine)',Y:90,E:99,d:'Propanal + nitrostyrene in hexane. Syn/anti 96:4 and er 99.5:0.5. The bulky Jørgensen–Hayashi catalyst gives higher selectivity than proline.'},
+{n:'Photoredox + amine',y:'Nicewicz & MacMillan · 2008',cat:'Imidazolidinone 35 (20 mol%) + Ru photocatalyst',mode:'Enamine + radical (two linked cycles)',Y:92,E:90,d:'Light drives a photocatalyst cycle that makes alkyl radicals; the organocatalyst cycle forms the C–C bond and sets the stereochemistry. er 95:5 in the α-alkylation of an aldehyde.'}];
+let li=0;
+$('#libBtns').innerHTML=LIB.map((r,i)=>`<button data-i="${i}" aria-pressed="${i===0}"><b>${r.n}</b><em>${r.y}</em></button>`).join('');
+$$('#libBtns button').forEach(b=>b.onclick=()=>{li=+b.dataset.i;$$('#libBtns button').forEach(x=>x.setAttribute('aria-pressed',x===b));drawLib()});
+function drawLib(){const r=LIB[li];$('#libCard').innerHTML=`<h3 style="margin:0">${r.n}</h3><p class="small" style="margin:0 0 8px">${r.y}</p><p style="margin:.3em 0"><b>Catalyst:</b> ${r.cat}</p><p style="margin:.3em 0"><b>Activation:</b> ${r.mode}</p><p>${r.d}</p>`;
+const c=$('#libCh'),g=c.getContext('2d'),cs=getComputedStyle(document.documentElement),ink=cs.getPropertyValue('--ink'),line=cs.getPropertyValue('--line');
+g.clearRect(0,0,420,300);g.font='13px sans-serif';g.fillStyle=ink;g.strokeStyle=line;
+for(let v=0;v<=100;v+=25){const y=260-v*2.3;g.beginPath();g.moveTo(40,y);g.lineTo(410,y);g.stroke();g.fillText(v,8,y+4)}
+LIB.forEach((q,i)=>{const x=60+i*70;[[q.Y,cs.getPropertyValue('--ok')],[q.E,cs.getPropertyValue('--ena')]].forEach((a,j)=>{g.fillStyle=a[1];const h=a[0]*2.3;g.globalAlpha=i===li?1:.35;g.fillRect(x+j*24,260-h,22,h)});g.globalAlpha=1;g.fillStyle=ink;g.fillText(i+1,x+18,280)});
+g.fillStyle=cs.getPropertyValue('--ok');g.fillRect(250,6,10,10);g.fillStyle=ink;g.fillText('yield %',264,16);g.fillStyle=cs.getPropertyValue('--ena');g.fillRect(325,6,10,10);g.fillStyle=ink;g.fillText('ee %',339,16)}
+/* ---------- DATA SCIENCE ---------- */
+const CL=['Alkaloid base','Proline / amino acid','Imidazolidinone','Diarylprolinol ether','Thiourea (H-bond)','Aldolase antibody'],CC=['#c77d0a','#9b4fd0','#0b9aa8','#d6336c','#4c8c2b','#7a8a96'];
+const R=[['Pracejus ketene methanolysis',1960,0,87,13,'Nobel background p.3, Fig. 1 (refs 12–13)'],['Hajos–Parrish cyclisation',1971,1,97.4,2.6,'Nobel background p.5, Scheme 1 (refs 28–29)'],['Eder–Sauer–Wiechert cyclisation',1971,1,91.8,8.2,'Nobel background p.5, Scheme 1 (ref 30)'],['Yamaguchi malonate Michael',1993,1,88,12,'Nobel background p.8, eq. 7, best of 8 examples (ref 38)'],['Kawara–Taguchi Michael',1994,1,85.5,14.5,'Nobel background p.8, eq. 8, best of 10 (ref 39)'],['Jacobsen Strecker',1998,4,96,4,'Nobel background p.3, eq. 1 (refs 20–21)'],['Antibody 38C2 aldol',1998,5,95.5,4.5,'Nobel background p.6, eq. 3 (ref 33)'],['List proline aldol (4-nitrobenzaldehyde)',2000,1,88,12,'List et al. 2000, p.2395: 76% ee, er derived'],['List proline aldol (isobutyraldehyde)',2000,1,98,2,'List et al. 2000, p.2396: 96% ee, er derived'],['MacMillan Diels–Alder',2000,2,98,2,'Nobel background p.6, eq. 4, best of 12 (ref 25)'],['MacMillan 1,4-addition',2002,2,98,2,'Nobel background p.9, eq. 10 (ref 50)'],['Hayashi Michael',2005,3,99.5,.5,'Nobel background p.10, eq. 12 (ref 54)'],['Jørgensen sulfenylation',2005,3,99,1,'Nobel background p.10, eq. 11 (ref 53)'],['Jørgensen epoxidation',2005,3,98,2,'Nobel background p.10, Scheme 3a (ref 55)'],['Nicewicz–MacMillan photoredox',2008,2,95,5,'Nobel background p.13, eq. 13 (ref 59)'],['Woggon tocopherol cascade',2008,3,98.5,1.5,'Nobel background p.14, eq. 14 (ref 68)'],['Novartis aliskiren intermediate',2008,3,96.5,3.5,'Nobel background p.15, Scheme 8, compound 49 (ref 70)'],['MacMillan tashiromine (SOMO)',2009,2,96.5,3.5,'Nobel background p.12, Scheme 5 (ref 58)'],['List double Mannich',2009,1,99.5,.5,'Nobel background p.9, eq. 9 (ref 44); ratio garbled in source, read as 99.5:0.5']];
+const D=R.map(r=>[r[0],r[1],r[2],+(r[3]-r[4]).toFixed(1),r[3]+':'+r[4],r[5]]);
+let on=new Set(CL),sel=-1;
+const med=a=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
+const vis=()=>D.map((d,i)=>i).filter(i=>on.has(CL[D[i][2]]));
+$('#chips').innerHTML=CL.map((c,i)=>`<button class="chip" aria-pressed="true" data-c="${c}"><i style="background:${CC[i]}"></i>${c}</button>`).join('');
+$$('#chips .chip').forEach(b=>b.onclick=()=>{const c=b.dataset.c;on.has(c)?on.delete(c):on.add(c);b.setAttribute('aria-pressed',on.has(c));if(sel>=0&&!on.has(CL[D[sel][2]]))sel=-1;upd()});
+$('#pc').innerHTML=CL.map(c=>`<option>${c}</option>`).join('');$('#pc').value=CL[1];$('#pc').oninput=pred;$('#Y').oninput=upd;
+const XP=(c,y)=>50+(y-1905)*(c.width-70)/107,YP=(c,e)=>c.height-40-e*(c.height-60)/100,PX=(c,i)=>XP(c,D[i][1])+(i%3-1)*5;
+function drawSc(){const c=$('#sc'),g=c.getContext('2d'),cs=getComputedStyle(document.documentElement),ink=cs.getPropertyValue('--ink').trim(),ln=cs.getPropertyValue('--line').trim();
+g.clearRect(0,0,c.width,c.height);g.font='13px sans-serif';g.fillStyle=ink;g.strokeStyle=ln;
+for(let v=0;v<=100;v+=25){g.beginPath();g.moveTo(50,YP(c,v));g.lineTo(c.width-10,YP(c,v));g.stroke();g.fillText(v,16,YP(c,v)+4)}
+for(let y=1920;y<=2000;y+=20)g.fillText(y,XP(c,y)-14,c.height-20);g.fillText('ee %',6,14);
+const cy=+$('#Y').value;g.setLineDash([5,4]);g.strokeStyle=ink;g.beginPath();g.moveTo(XP(c,cy),10);g.lineTo(XP(c,cy),c.height-40);g.stroke();g.setLineDash([]);
+vis().forEach(i=>{g.fillStyle=CC[D[i][2]];g.beginPath();g.arc(PX(c,i),YP(c,D[i][3]),i===sel?9:6,0,7);g.fill();if(i===sel){g.strokeStyle=ink;g.lineWidth=3;g.stroke();g.lineWidth=1}})}
+$('#sc').onclick=e=>{const c=e.target,r=c.getBoundingClientRect(),x=(e.clientX-r.left)*c.width/r.width,y=(e.clientY-r.top)*c.height/r.height;let b=-1,bd=18;vis().forEach(i=>{const d=Math.hypot(PX(c,i)-x,YP(c,D[i][3])-y);if(d<bd){bd=d;b=i}});sel=b;upd()};
+function upd(){const Y=+$('#Y').value,v=vis();$('#vY').textContent=Y;
+const a=v.filter(i=>D[i][1]<Y).map(i=>D[i][3]),b=v.filter(i=>D[i][1]>=Y).map(i=>D[i][3]),t=m=>m===null?'no data':f(m)+'% ee';
+$('#stats').innerHTML=`Before ${Y}: <b>${a.length}</b> results, median ${t(med(a))}.<br>From ${Y}: <b>${b.length}</b> results, median ${t(med(b))}.`;
+$('#tb').innerHTML='<thead><tr><th>Reaction</th><th>Year</th><th>Family</th><th>er</th><th>ee %</th><th>Source</th></tr></thead><tbody>'+v.map(i=>`<tr class="${i===sel?'sel':''}" data-i="${i}" tabindex="0"><td>${D[i][0]}</td><td>${D[i][1]}</td><td>${CL[D[i][2]]}</td><td>${D[i][4]}</td><td>${D[i][3]}</td><td class="small">${D[i][5]}</td></tr>`).join('')+'</tbody>';
+$$('#tb tbody tr').forEach(r=>{const h=()=>{sel=+r.dataset.i;upd()};r.onclick=h;r.onkeydown=e=>{if(e.key==='Enter')h()}});
+$('#sd').textContent=sel>=0?`${D[sel][0]} (${D[sel][1]}): reported er ${D[sel][4]}, so ${D[sel][3]}% ee, with a ${CL[D[sel][2]].toLowerCase()} catalyst. Source: ${D[sel][5]}.`:'Click a dot or a row for details.';drawSc()}
+const mean=a=>a.reduce((s,x)=>s+x,0)/a.length;
+function pred(){const k=$('#pc').value,a=D.filter(d=>CL[d[2]]===k).map(d=>d[3]);
+$('#pe').textContent=f(mean(a))+'% ee';$('#pt').textContent=`Average of ${a.length} reported result${a.length>1?'s':''}, ranging ${Math.min(...a)}–${Math.max(...a)}% ee.`;
+$('#rk').textContent='Ranked by average ee: '+CL.map(c=>[c,mean(D.filter(d=>CL[d[2]]===c).map(d=>d[3]))]).sort((x,y)=>y[1]-x[1]).map(x=>`${x[0]} ${f(x[1])}`).join(' > ')+'.';
+let e1=0,e0=0;D.forEach((d,i)=>{const o=D.filter((_,j)=>j!==i),s=o.filter(x=>x[2]===d[2]);e0+=Math.abs(d[3]-mean(o.map(x=>x[3])));e1+=Math.abs(d[3]-mean((s.length?s:o).map(x=>x[3])))});
+$('#loo').textContent=`Leave-one-out check: using the family gives an average error of ${f(e1/D.length,1)} ee points, against ${f(e0/D.length,1)} when ignoring it. With 19 points, treat this as a demonstration.`}
+matchMedia('(prefers-color-scheme:dark)').addEventListener('change',drawSc);
+let sw=false;function drawMir(){const P=[[0,-62],[-54,32],[54,32],[0,66]],C=['#8c1c13','#7aa34a','#1b6aa5','#d9a010'];
+const mol=(cx,m,c)=>{let s='';P.forEach((p,i)=>{const x=cx+(m?-p[0]:p[0]),y=95+p[1];s+=`<line x1="${cx}" y1="95" x2="${x}" y2="${y}" stroke="var(--ink)" stroke-width="5"${i==3?' stroke-dasharray="5 4"':''}/><circle cx="${x}" cy="${y}" r="17" fill="${c[i]}"/>`});return s+`<circle cx="${cx}" cy="95" r="14" fill="var(--ink)"/>`};
+const L=C.slice();if(sw){L[1]=C[2];L[2]=C[1]}
+$('#mir').innerHTML=mol(95,false,L)+`<rect x="213" y="8" width="14" height="174" fill="var(--imi)" opacity=".35"/>`+mol(345,true,C);
+$('#swpT').textContent=sw?'Now the left molecule matches the right one. Swapping two groups turns one hand into the other.':'No rotation makes these two match. They are mirror images.'}
+$('#swp').onclick=()=>{sw=!sw;drawMir()};
+setRx('aldol');upd();pred();drawLib();drawMir();
+</script></body></html>
