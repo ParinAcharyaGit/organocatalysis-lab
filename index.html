@@ -61,60 +61,53 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}td,th{padding:5px 8px
 .mv{animation:mv .9s ease-out both}@keyframes mv{from{transform:translate(var(--dx),var(--dy));opacity:.15}to{transform:none;opacity:1}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}.mv{animation:none}}
 </style></head><body><main>
-<div class="band hd"><p class="k small" style="margin:0">Interactive infographic · awarded to Benjamin List &amp; David MacMillan</p>
+<div class="band hd"><p class="k small" style="margin:0">Interactive infographic · 2021 Nobel Prize Chemistry awarded to Benjamin List &amp; David MacMillan</p>
 <h1>2021 Nobel Prize in Chemistry</h1>
-<p class="lede">Many drug molecules come as left- and right-handed mirror images, and only one helps. In 2000, List and MacMillan showed that small metal-free organic molecules can steer a reaction toward one hand. Run the experiment, compare five reactions, then mine the literature with a small data-science prototype.</p></div>
-<section class="band"><div class="pill">Mirror-image molecules (enantiomers)</div><div class="grid" style="align-items:center"><svg id="mir" viewBox="0 0 440 190" role="img" aria-label="Two mirror-image molecules" style="width:100%;height:auto"></svg><div><p style="margin:0 0 8px">Same atoms, same bonds, opposite handedness, like your left and right hands. Enzymes make one hand only. Chemists usually need one hand too, because the other can act differently in the body.</p><button class="btn" id="swp">Swap two groups on the left molecule</button><p class="small" id="swpT"></p></div></div></section>
+<p class="lede">Many organic drug molecules exist as left- and right-handed mirror images, and only one helps. In 2000, List and MacMillan showed that small metal-free organic molecules can steer a reaction toward one hand.</p></div>
+<section class="band"><div class="pill">Mirror-image molecules (enantiomers)</div><div class="grid" style="align-items:center"><svg id="mir" viewBox="0 0 440 190" role="img" aria-label="Two mirror-image molecules" style="width:100%;height:auto"></svg><div><p style="margin:0 0 8px">Same atoms, differing structural geometry, like your left and right hands.</p><button class="btn" id="swp">Swap two groups on the left molecule</button><p class="small" id="swpT"></p></div></div></section>
 
 <!-- LAB -->
-<section id="lab" class="band"><div class="pill">Run the experiment</div>
+<section id="lab" class="band"><div class="pill">Visualize the organocatalysis experiments</div>
 <div class="seg row" style="margin:0 0 12px" id="rxSeg">
 <button data-r="aldol" aria-pressed="true">List · proline aldol (enamine)</button><button data-r="da" aria-pressed="false">MacMillan · Diels–Alder (iminium)</button></div>
 <div class="grid">
 <div class="card"><svg id="cyc" viewBox="0 0 440 400" role="img" aria-label="Catalytic cycle"></svg><svg id="scn" viewBox="0 0 440 150" role="img" aria-label="Plain-language picture of the current step" style="width:100%;height:auto;background:var(--band);border-radius:8px;margin-top:6px"></svg><p id="plain" style="margin:6px 0;font-weight:600"></p>
 <p id="stepTxt" style="margin:4px 0 0;min-height:3.4em"></p>
 <div class="row"><button class="btn" id="play">Play cycle</button><button class="btn alt" id="next">Next step</button></div></div>
-<div class="card"><h3 style="margin:0 0 4px">Adjust the experiment</h3>
+<div class="card"><h3 style="margin:0 0 4px">Adjust the experiment conditions</h3>
 <label>Catalyst<select id="cat"></select></label>
 <label>Solvent<select id="sol"></select></label>
-<label>Catalyst loading: <b id="vL"></b> mol%</label><input type="range" id="L" min="1" max="40" value="30">
+<label>Catalyst concentration: <b id="vL"></b> mol%</label><input type="range" id="L" min="1" max="40" value="30">
 <label>Temperature: <b id="vT"></b> °C</label><input type="range" id="T" min="-40" max="50" value="25">
 <label>Time: <b id="vH"></b> h</label><input type="range" id="H" min="1" max="48" value="4">
 <div style="margin-top:14px"><div class="small">Yield</div><div class="num" id="oy"></div><div class="meter"><i id="by" style="background:var(--ok)"></i></div></div>
 <div style="margin-top:12px"><div class="small">Enantiomeric excess (how lopsided the mirror-image mix is)</div><div class="num" id="oe"></div>
 <div class="meter"><i id="bR" style="background:var(--ena)"></i><i id="bS" style="background:var(--imi)"></i></div>
 <div class="small" id="hand"></div></div></div></div>
-<div class="card" style="margin-top:16px"><h3 style="margin:0 0 4px">What the catalyst does to the electrons</h3><p id="orbTxt" style="margin:0 0 8px"></p>
+<div class="card" style="margin-top:16px"><h3 style="margin:0 0 4px">Exploring the role of the catalyst in the reaction</h3><p id="orbTxt" style="margin:0 0 8px"></p>
 <svg id="orb" viewBox="0 0 640 200" role="img" aria-label="Energy levels with a movable electron" style="width:100%;height:auto"></svg>
 <label>Catalyst effect: <b id="vE">0</b>%</label><input type="range" id="eff" min="0" max="100" value="0">
 <div class="row" style="align-items:center"><button class="btn" id="nudge">Give the electron a nudge</button><span id="orbRes" class="small"></span></div>
-<div class="small" style="margin-top:8px">How easy it is to react (conceptual)</div><div class="meter"><i id="easeB" style="background:var(--ok)"></i></div></div>
-<p class="note">The sliders drive a simplified toy model, anchored on figures reported in the List 2000 paper (30 mol% proline, DMSO, 4 h: 68% yield, 76% ee; solvent ee values for DMSO, DMF, acetone, THF and MeCN; failed catalysts) and the MacMillan range in the Nobel background (72–92%, er 91.5:8.5 up to 98:2). Temperature, time and Diels–Alder solvent trends are illustrative, not measured.</p>
+<div class="small" style="margin-top:8px">How easy it is to react</div><div class="meter"><i id="easeB" style="background:var(--ok)"></i></div></div>
 </section>
 
 <!-- LIBRARY -->
-<section id="lib" class="band"><div class="pill">Five reactions, one idea</div>
+<section id="lib" class="band"><div class="pill">Visualizing Yield vs. Selectivity (Enantiomeric ratio)</div>
 <div class="lib" id="libBtns"></div>
 <div class="grid"><div class="card" id="libCard"></div>
-<div class="card"><h3 style="margin:0 0 6px">Yield vs. selectivity</h3><canvas id="libCh" width="420" height="300"></canvas><p class="small">Selectivity is shown as ee, converted from the reported enantiomer ratio (er).</p></div></div>
+<div class="card"><h3 style="margin:0 0 6px">Yield (%) vs. ee (%)</h3><canvas id="libCh" width="420" height="300"></canvas><p class="small">Data obtained from the Nobel Prize Scientific Report.</p></div></div>
 </section>
 
 <!-- DATA SCIENCE -->
-<section id="ds" class="band"><div class="pill">Data science prototype: catalyst advisor</div>
-<p style="margin:0 0 10px;max-width:68ch">Question: which catalyst family should a new project try first? This prototype uses 19 results with a reported selectivity, taken by hand from the two provided documents; every row cites its page, equation or scheme. Filter by family, split the record at any year, and test a simple predictor.</p>
+<section id="ds" class="band"><div class="pill">Data science Prototype: Catalyst Advisor</div>
+<p style="margin:0 0 10px;max-width:100ch">Question: which catalyst family should a new project try first? This prototype uses 19 results with reported ee ratios; every row below cites its source. Filter by family, split the record by year, and run simple predictions.</p>
 <div class="row" id="chips" style="margin:0 0 12px"></div>
 <div class="grid"><div class="card"><canvas id="sc" width="520" height="340" role="img" aria-label="Scatter plot of reported ee by year; the table below lists the same data"></canvas>
 <label>Split the record at: <b id="vY"></b></label><input type="range" id="Y" min="1910" max="2010" value="2000"><p id="stats" style="margin:8px 0 0"></p></div>
 <div class="card"><h3 style="margin:0 0 4px">Predict a family's selectivity</h3><label>Catalyst family<select id="pc"></select></label>
 <div class="num" id="pe" style="margin-top:8px"></div><p class="small" id="pt" style="margin:4px 0"></p><p class="small" id="rk" style="margin:4px 0"></p><p class="small" id="loo" style="margin:4px 0"></p></div></div>
 <div class="card" style="margin-top:12px"><p class="small" id="sd" style="margin:0 0 6px">Click a dot or a row for details.</p><div style="overflow-x:auto"><table id="tb"></table></div></div>
-<div class="card" style="margin-top:12px"><h3 style="margin:0 0 6px">Sources</h3><p class="small" style="margin:0 0 6px"><b>Nobel background:</b> The Nobel Committee for Chemistry (P. Somfai), <i>Scientific Background on the Nobel Prize in Chemistry 2021: Enamine and iminium ion–mediated organocatalysis</i>, Royal Swedish Academy of Sciences, 6 October 2021. Page numbers are the document's own (n of 19).<br><b>List paper:</b> List, B.; Lerner, R. A.; Barbas, C. F. III, <i>Proline-catalyzed direct asymmetric aldol reactions</i>, J. Am. Chem. Soc. 2000, 122, 2395–2396.</p>
-<p class="small" style="margin:0">Original papers behind the reference numbers in the Nobel background: 12–13 Pracejus (1960, 1964); 20–21 Sigman &amp; Jacobsen (1998), Zuend et al. (2009); 25 Ahrendt, Borths &amp; MacMillan (2000); 28–30 Hajos &amp; Parrish (1971, 1974), Eder, Sauer &amp; Wiechert (1971); 33 Hoffmann et al. (1998); 38 Yamaguchi et al. (1993); 39 Kawara &amp; Taguchi (1994); 44 Chandler et al. (2009); 50 Paras &amp; MacMillan (2002); 53 Marigo et al. (2005); 54 Hayashi et al. (2005); 55 Marigo et al. (2005); 58 Conrad et al. (2009); 59 Nicewicz &amp; MacMillan (2008); 68 Liu, Chougnet &amp; Woggon (2008); 70 Sedelmeier, patent WO2008119804A1.</p></div>
-<div class="pt"><div class="card"><h3>From text to table</h3><p>Every row here was read from prose, schemes and ratios, then converted from er to ee. Automated extraction from papers and patents would build this table at scale.</p></div>
-<div class="card"><h3>What more data enables</h3><p>With thousands of reactions, models can use catalyst structure, solvent and substrate rather than family alone, and can suggest experiments, as in the Bayesian screening ideas behind modern lab automation.</p></div>
-<div class="card"><h3>Handle with care</h3><p>Papers report successes, and each reaction has its own conditions. A small, biased sample like this one shows the method, not a ranking you should trust.</p></div></div>
-<p class="note">ee = er difference (for example 87:13 gives 74% ee). Values are the best reported in each source. The double Mannich ratio appears garbled in the source text and is read here as 99.5:0.5. The 1912 and 1975 alkaloid results and the Agami cyclisations are left out because only "low" or "moderate" was reported.</p></section>
-<section class="band"><h2>Why does this research matter?</h2><div class="why"><div class="card"><h3 style="margin:0">No metals needed</h3><p class="small" style="margin:4px 0 0">Catalysts built from carbon, hydrogen, nitrogen, sulphur and phosphorus avoid metal catalysts' sensitivity and environmental cost.</p></div><div class="card"><h3 style="margin:0">Built from nature's parts</h3><p class="small" style="margin:4px 0 0">Proline is an amino acid, available in both mirror-image forms. The imidazolidinone starts from phenylalanine.</p></div><div class="card"><h3 style="margin:0">Steps that chain together</h3><p class="small" style="margin:4px 0 0">Cascade reactions skip purification between steps, as in the vitamin E synthesis, with fewer steps and less waste.</p></div></div></section></main>
+<section class="band"><h2>Why does this research matter?</h2><div class="why"><div class="card"><h3 style="margin:0">No metals needed</h3><p class="small" style="margin:4px 0 0">Catalysts are composed from carbon, hydrogen, nitrogen, sulphur and phosphorus, addressing metal catalysts' sensitivity and environmental impact.</p></div><div class="card"><h3 style="margin:0">Naturally occuring</h3><p class="small" style="margin:4px 0 0">Proline is an amino acid, available in both mirror-image forms.</p></div><div class="card"><h3 style="margin:0">Steps that chain together</h3><p class="small" style="margin:4px 0 0">Cascade reactions skip purification between steps, as in the vitamin E synthesis, producing less chemical waste.</p></div></div></section></main>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 $$('.tab').forEach(b=>b.onclick=()=>{$$('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));$$('.panel').forEach(p=>p.hidden=p.id!==b.dataset.p);if(b.dataset.p==='lib')drawLib();if(b.dataset.p==='ds')drawConv()});
@@ -250,7 +243,8 @@ let sw=false;function drawMir(){const P=[[0,-62],[-54,32],[54,32],[0,66]],C=['#8
 const mol=(cx,m,c)=>{let s='';P.forEach((p,i)=>{const x=cx+(m?-p[0]:p[0]),y=95+p[1];s+=`<line x1="${cx}" y1="95" x2="${x}" y2="${y}" stroke="var(--ink)" stroke-width="5"${i==3?' stroke-dasharray="5 4"':''}/><circle cx="${x}" cy="${y}" r="17" fill="${c[i]}"/>`});return s+`<circle cx="${cx}" cy="95" r="14" fill="var(--ink)"/>`};
 const L=C.slice();if(sw){L[1]=C[2];L[2]=C[1]}
 $('#mir').innerHTML=mol(95,false,L)+`<rect x="213" y="8" width="14" height="174" fill="var(--imi)" opacity=".35"/>`+mol(345,true,C);
-$('#swpT').textContent=sw?'Now the left molecule matches the right one. Swapping two groups turns one hand into the other.':'No rotation makes these two match. They are mirror images.'}
+$('#swpT').textContent=sw?'Now the left molecule matches the right one. Swapping two groups turns one hand into the other.':'The left molecule is the mirror image of the right. Swapping two groups turns one hand into the other.'}
 $('#swp').onclick=()=>{sw=!sw;drawMir()};
 setRx('aldol');upd();pred();drawLib();drawMir();
 </script></body></html>
+
