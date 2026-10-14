@@ -5,16 +5,23 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#eef3f6;--card:#fff;--ink:#10222b;--mut:#506670;--line:#cfdbe2;--ena:#7a3ea1;--imi:#0b7a8a;--ok:#2f8f5b;--warn:#b7791f}
+--bg:#eef3f6;--card:#fff;--ink:#10222b;--mut:#506670;--line:#cfdbe2;--ena:#7a3ea1;--imi:#0b7a8a;--ok:#2f8f5b;--warn:#b7791f;--zoom:1}
 :root:not([data-theme="light"]){}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a20;--card:#162830;--ink:#e6eff3;--mut:#9ab2bc;--line:#2a424d;--ena:#c08be6;--imi:#4cc3d3;--ok:#5fd08e;--warn:#e6b14f}}
 :root[data-theme="dark"]{--bg:#0e1a20;--card:#162830;--ink:#e6eff3;--mut:#9ab2bc;--line:#2a424d;--ena:#c08be6;--imi:#4cc3d3;--ok:#5fd08e;--warn:#e6b14f}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Source Serif 4",Georgia,serif}
+html{scroll-padding-top:70px;scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0;background:var(--gold);color:var(--ink);font:17px/1.6 "Source Serif 4",Georgia,serif;zoom:var(--zoom)}
 h1,h2,h3,.tab,button,label,.k{font-family:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif}
 main{max-width:1000px;margin:0 auto;padding:20px 16px 60px}
+.menubar{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:2px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:0 20px;height:60px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+.menu-links{display:flex;gap:15px}
+.menu-links a{text-decoration:none;color:var(--mut);font-family:"Bricolage Grotesque",sans-serif;font-size:.9rem;font-weight:500;transition:.2s}
+.menu-links a:hover{color:var(--ink)}
+.zoom-controls{display:flex;gap:5px;align-items:center}
+.zoom-btn{background:var(--bg);border:1px solid var(--line);border-radius:4px;width:32px;height:32px;cursor:pointer;font-weight:bold;color:var(--ink)}
+.zoom-btn:hover{background:var(--line)}
 h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.08;margin:.2em 0 .3em;letter-spacing:-.02em}
-.lede{max-width:62ch;color:var(--mut)}
+.lede{max-width:100ch;color:var(--mut)}
 nav{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 14px;border-bottom:2px solid var(--line)}
 .tab{border:0;background:none;color:var(--mut);padding:10px 14px;font-size:1rem;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
 .tab[aria-selected=true]{color:var(--ink);border-color:var(--ink);font-weight:700}
@@ -49,7 +56,7 @@ canvas{width:100%;height:auto;display:block;border-radius:8px;background:var(--c
 .pt{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
 .pt p{margin:.2em 0 0;font-size:.95rem}.pt h3{margin:0;font-size:1rem}
 .note{border-left:4px solid var(--warn);padding:6px 12px;margin-top:14px;color:var(--mut);font-size:.88rem}
-:root{--band:#fbeccb;--gold:#e8b030;--pill:#d9a010}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--band:#1d3038;--gold:#7a5a12;--pill:#a87a14}}:root[data-theme="dark"]{--band:#1d3038;--gold:#7a5a12;--pill:#a87a14}
+:root{--band:#dcf2dc;--gold:#4a7c59;--pill:#6b8e23}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--band:#1d3038;--gold:#2d4a33;--pill:#a87a14}}:root[data-theme="dark"]{--band:#1d3038;--gold:#2d4a33;--pill:#a87a14}
 body{background:var(--gold)}main{padding:14px 12px 50px}
 .band{background:var(--band);border-radius:16px;padding:20px;margin:12px 0}
 .hd h1{text-transform:uppercase;font-size:clamp(1.8rem,5.4vw,3.2rem);margin:.1em 0 .25em}
@@ -60,14 +67,33 @@ body{background:var(--gold)}main{padding:14px 12px 50px}
 table{width:100%;border-collapse:collapse;font-size:.88rem}td,th{padding:5px 8px;border-bottom:1px solid var(--line);text-align:left}tbody tr{cursor:pointer}tr.sel{background:color-mix(in srgb,var(--imi) 20%,transparent)}
 .mv{animation:mv .9s ease-out both}@keyframes mv{from{transform:translate(var(--dx),var(--dy));opacity:.15}to{transform:none;opacity:1}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}.mv{animation:none}}
-</style></head><body><main>
-<div class="band hd"><p class="k small" style="margin:0">Interactive infographic · 2021 Nobel Prize Chemistry awarded to Benjamin List &amp; David MacMillan</p>
-<h1>2021 Nobel Prize in Chemistry</h1>
+.img-box{margin:15px 0;text-align:center}
+.img-box img{width:50%;height:auto;margin:0 auto;display:block;border-radius:8px;border:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+</style></head><body onload="initZoom()">
+<header class="menubar">
+<div class="menu-links">
+<a href="#mir">Mirror-images</a>
+<a href="#lab">Lab</a>
+<a href="#lib">Library</a>
+<a href="#ds">Data Science</a>
+<a href="#why">Why it matters</a>
+</div>
+<div class="zoom-controls">
+<button class="zoom-btn" id="zOut">−</button>
+<button class="zoom-btn" id="zIn">+</button>
+</div>
+</header>
+<main>
+<div class="band hd"><p class="k " style="margin:0">Interactive infographic · 2021 Nobel Prize in Chemistry awarded to Benjamin List &amp; David MacMillan</p>
+<h1>Asymmetric Organocatalysis</h1>
+<div class="img-box">
+<img src="images/list-macmillan.jpg" alt="Benjamin List and David MacMillan">
+</div>
 <p class="lede">Many organic drug molecules exist as left- and right-handed mirror images, and only one helps. In 2000, List and MacMillan showed that small metal-free organic molecules can steer a reaction toward one hand.</p></div>
 <section class="band"><div class="pill">Mirror-image molecules (enantiomers)</div><div class="grid" style="align-items:center"><svg id="mir" viewBox="0 0 440 190" role="img" aria-label="Two mirror-image molecules" style="width:100%;height:auto"></svg><div><p style="margin:0 0 8px">Same atoms, differing structural geometry, like your left and right hands.</p><button class="btn" id="swp">Swap two groups on the left molecule</button><p class="small" id="swpT"></p></div></div></section>
-
 <!-- LAB -->
-<section id="lab" class="band"><div class="pill">Visualize the organocatalysis experiments</div>
+<section id="lab" class="band">
+<div class="pill">Visualize the organocatalysis experiments</div>
 <div class="seg row" style="margin:0 0 12px" id="rxSeg">
 <button data-r="aldol" aria-pressed="true">List · proline aldol (enamine)</button><button data-r="da" aria-pressed="false">MacMillan · Diels–Alder (iminium)</button></div>
 <div class="grid">
@@ -84,6 +110,12 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}td,th{padding:5px 8px
 <div style="margin-top:12px"><div class="small">Enantiomeric excess (how lopsided the mirror-image mix is)</div><div class="num" id="oe"></div>
 <div class="meter"><i id="bR" style="background:var(--ena)"></i><i id="bS" style="background:var(--imi)"></i></div>
 <div class="small" id="hand"></div></div></div></div>
+<div class="img-box">
+<img src="images/Screenshot 2026-10-14 112123.png" alt="Lab setup overview">
+</div>
+<div class="img-box">
+<img src="images/Screenshot 2026-10-14 112137.png" alt="Library data overview">
+</div>
 <div class="card" style="margin-top:16px"><h3 style="margin:0 0 4px">Exploring the role of the catalyst in the reaction</h3><p id="orbTxt" style="margin:0 0 8px"></p>
 <svg id="orb" viewBox="0 0 640 200" role="img" aria-label="Energy levels with a movable electron" style="width:100%;height:auto"></svg>
 <label>Catalyst effect: <b id="vE">0</b>%</label><input type="range" id="eff" min="0" max="100" value="0">
@@ -92,14 +124,16 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}td,th{padding:5px 8px
 </section>
 
 <!-- LIBRARY -->
-<section id="lib" class="band"><div class="pill">Visualizing Yield vs. Selectivity (Enantiomeric ratio)</div>
+<section id="lib" class="band">
+<div class="pill">Visualizing Yield vs. Selectivity (Enantiomeric ratio)</div>
 <div class="lib" id="libBtns"></div>
 <div class="grid"><div class="card" id="libCard"></div>
 <div class="card"><h3 style="margin:0 0 6px">Yield (%) vs. ee (%)</h3><canvas id="libCh" width="420" height="300"></canvas><p class="small">Data obtained from the Nobel Prize Scientific Report.</p></div></div>
 </section>
 
 <!-- DATA SCIENCE -->
-<section id="ds" class="band"><div class="pill">Data science Prototype: Catalyst Advisor</div>
+<section id="ds" class="band">
+<div class="pill">Data science Prototype: Catalyst Advisor</div>
 <p style="margin:0 0 10px;max-width:100ch">Question: which catalyst family should a new project try first? This prototype uses 19 results with reported ee ratios; every row below cites its source. Filter by family, split the record by year, and run simple predictions.</p>
 <div class="row" id="chips" style="margin:0 0 12px"></div>
 <div class="grid"><div class="card"><canvas id="sc" width="520" height="340" role="img" aria-label="Scatter plot of reported ee by year; the table below lists the same data"></canvas>
@@ -107,7 +141,17 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}td,th{padding:5px 8px
 <div class="card"><h3 style="margin:0 0 4px">Predict a family's selectivity</h3><label>Catalyst family<select id="pc"></select></label>
 <div class="num" id="pe" style="margin-top:8px"></div><p class="small" id="pt" style="margin:4px 0"></p><p class="small" id="rk" style="margin:4px 0"></p><p class="small" id="loo" style="margin:4px 0"></p></div></div>
 <div class="card" style="margin-top:12px"><p class="small" id="sd" style="margin:0 0 6px">Click a dot or a row for details.</p><div style="overflow-x:auto"><table id="tb"></table></div></div>
-<section class="band"><h2>Why does this research matter?</h2><div class="why"><div class="card"><h3 style="margin:0">No metals needed</h3><p class="small" style="margin:4px 0 0">Catalysts are composed from carbon, hydrogen, nitrogen, sulphur and phosphorus, addressing metal catalysts' sensitivity and environmental impact.</p></div><div class="card"><h3 style="margin:0">Naturally occuring</h3><p class="small" style="margin:4px 0 0">Proline is an amino acid, available in both mirror-image forms.</p></div><div class="card"><h3 style="margin:0">Steps that chain together</h3><p class="small" style="margin:4px 0 0">Cascade reactions skip purification between steps, as in the vitamin E synthesis, producing less chemical waste.</p></div></div></section></main>
+<section class="band" id="why"><h2>Why does this research matter?</h2><div class="why"><div class="card"><h3 style="margin:0">No metals needed</h3><p class="small" style="margin:4px 0 0">Catalysts are composed from carbon, hydrogen, nitrogen, sulphur and phosphorus, addressing metal catalysts' sensitivity and environmental impact.</p></div><div class="card"><h3 style="margin:0">Naturally occuring</h3><p class="small" style="margin:4px 0 0">Proline is an amino acid, available in both mirror-image forms.</p></div><div class="card"><h3 style="margin:0">Steps that chain together</h3><p class="small" style="margin:4px 0 0">Cascade reactions skip purification between steps, as in the vitamin E synthesis, producing less chemical waste.</p></div></div></section>
+<div class="img-box">
+<img src="images/Screenshot 2026-10-14 112151.png">
+Organocatalysis - "An ingenious tool for building molecules"
+
+<p>
+    (Nobel Prize in Chemistry 2021 Scientific Background, <a href="https://www.nobelprize.org/uploads/2021/10/advanced-chemistryprize2021.pdf" target="_blank">https://www.nobelprize.org/uploads/2021/10/advanced-chemistryprize2021.pdf</a>)
+</p>
+</p>
+</div>
+</main>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 $$('.tab').forEach(b=>b.onclick=()=>{$$('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));$$('.panel').forEach(p=>p.hidden=p.id!==b.dataset.p);if(b.dataset.p==='lib')drawLib();if(b.dataset.p==='ds')drawConv()});
@@ -208,7 +252,13 @@ g.clearRect(0,0,420,300);g.font='13px sans-serif';g.fillStyle=ink;g.strokeStyle=
 for(let v=0;v<=100;v+=25){const y=260-v*2.3;g.beginPath();g.moveTo(40,y);g.lineTo(410,y);g.stroke();g.fillText(v,8,y+4)}
 LIB.forEach((q,i)=>{const x=60+i*70;[[q.Y,cs.getPropertyValue('--ok')],[q.E,cs.getPropertyValue('--ena')]].forEach((a,j)=>{g.fillStyle=a[1];const h=a[0]*2.3;g.globalAlpha=i===li?1:.35;g.fillRect(x+j*24,260-h,22,h)});g.globalAlpha=1;g.fillStyle=ink;g.fillText(i+1,x+18,280)});
 g.fillStyle=cs.getPropertyValue('--ok');g.fillRect(250,6,10,10);g.fillStyle=ink;g.fillText('yield %',264,16);g.fillStyle=cs.getPropertyValue('--ena');g.fillRect(325,6,10,10);g.fillStyle=ink;g.fillText('ee %',339,16)}
-/* ---------- DATA SCIENCE ---------- */
+function initZoom(){
+let currentZoom=1;
+const updateZoom=()=>{document.documentElement.style.setProperty('--zoom',currentZoom);document.body.style.zoom=currentZoom};
+$('#zIn').onclick=()=>{currentZoom+=0.1;updateZoom()};
+$('#zOut').onclick=()=>{if(currentZoom>0.5){currentZoom-=0.1;updateZoom()}}
+}
+
 const CL=['Alkaloid base','Proline / amino acid','Imidazolidinone','Diarylprolinol ether','Thiourea (H-bond)','Aldolase antibody'],CC=['#c77d0a','#9b4fd0','#0b9aa8','#d6336c','#4c8c2b','#7a8a96'];
 const R=[['Pracejus ketene methanolysis',1960,0,87,13,'Nobel background p.3, Fig. 1 (refs 12–13)'],['Hajos–Parrish cyclisation',1971,1,97.4,2.6,'Nobel background p.5, Scheme 1 (refs 28–29)'],['Eder–Sauer–Wiechert cyclisation',1971,1,91.8,8.2,'Nobel background p.5, Scheme 1 (ref 30)'],['Yamaguchi malonate Michael',1993,1,88,12,'Nobel background p.8, eq. 7, best of 8 examples (ref 38)'],['Kawara–Taguchi Michael',1994,1,85.5,14.5,'Nobel background p.8, eq. 8, best of 10 (ref 39)'],['Jacobsen Strecker',1998,4,96,4,'Nobel background p.3, eq. 1 (refs 20–21)'],['Antibody 38C2 aldol',1998,5,95.5,4.5,'Nobel background p.6, eq. 3 (ref 33)'],['List proline aldol (4-nitrobenzaldehyde)',2000,1,88,12,'List et al. 2000, p.2395: 76% ee, er derived'],['List proline aldol (isobutyraldehyde)',2000,1,98,2,'List et al. 2000, p.2396: 96% ee, er derived'],['MacMillan Diels–Alder',2000,2,98,2,'Nobel background p.6, eq. 4, best of 12 (ref 25)'],['MacMillan 1,4-addition',2002,2,98,2,'Nobel background p.9, eq. 10 (ref 50)'],['Hayashi Michael',2005,3,99.5,.5,'Nobel background p.10, eq. 12 (ref 54)'],['Jørgensen sulfenylation',2005,3,99,1,'Nobel background p.10, eq. 11 (ref 53)'],['Jørgensen epoxidation',2005,3,98,2,'Nobel background p.10, Scheme 3a (ref 55)'],['Nicewicz–MacMillan photoredox',2008,2,95,5,'Nobel background p.13, eq. 13 (ref 59)'],['Woggon tocopherol cascade',2008,3,98.5,1.5,'Nobel background p.14, eq. 14 (ref 68)'],['Novartis aliskiren intermediate',2008,3,96.5,3.5,'Nobel background p.15, Scheme 8, compound 49 (ref 70)'],['MacMillan tashiromine (SOMO)',2009,2,96.5,3.5,'Nobel background p.12, Scheme 5 (ref 58)'],['List double Mannich',2009,1,99.5,.5,'Nobel background p.9, eq. 9 (ref 44); ratio garbled in source, read as 99.5:0.5']];
 const D=R.map(r=>[r[0],r[1],r[2],+(r[3]-r[4]).toFixed(1),r[3]+':'+r[4],r[5]]);
